@@ -38,3 +38,48 @@ I have also changed the disk type for SSD in case this affects the speed of writ
 
 Now it comes the section of allowing or not HTTP/HTTPS traffic. For now I'll leave it as it is. Click on `Create`
 
+## Accessing the shell 
+
+Click on the shell icon next to the search box in the top of your page
+
+### Can we just install guppy?
+
+Try with wget and the Ubuntu release. Get the link from the downloads section of Nanopore's website (propietary). I think I need the Linux-64bit GPU
+
+![image](https://user-images.githubusercontent.com/15640943/134558607-d4c6c0a0-ddd6-480f-ba9b-638507d35ded.png)
+
+I right click on the download Icon and `Copy link address`
+
+Then I use wget on the shell terminal in the GCP window
+
+![image](https://user-images.githubusercontent.com/15640943/134558944-44d31433-77f0-41b4-8fc4-103ead0958ed.png)
+
+
+And follow by a 
+
+`tar -xzvf ont-guppy-whatever.tar.gz`
+
+Allow the shell to find it by adding `ont-guppy/bin` to the `$PATH`
+
+## Now it finds it but it does not work
+
+![image](https://user-images.githubusercontent.com/15640943/134560094-9052ca5a-409b-4c62-813a-8e47b07dd3be.png
+
+## Maybe install CUDA?
+
+I found [this](https://towardsdatascience.com/installing-cuda-on-google-cloud-platform-in-10-minutes-9525d874c8c1)
+
+But it does not work. LEt's try again allowing http and https traffic
+
+ - Unfortunately NOAA's specs do not allow for http nor https in their firewall setups
+ - 
+
+
+
+
+
+
+
+
+
+
