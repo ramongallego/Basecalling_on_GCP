@@ -87,6 +87,11 @@ sudo apt-get update
 sudo apt-get install cuda-10-0 cuda-drivers -y
 ```
 
+Half way through it it complains and shows youthis
+
+![image](https://user-images.githubusercontent.com/15640943/134733576-1aae340b-720f-4edc-9020-3499bb44a14a.png)
+
+
 And update both `$PATH` and `$LD_LIBRARY_PATH`
 
 ```
