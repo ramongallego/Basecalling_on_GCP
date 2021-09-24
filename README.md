@@ -20,23 +20,27 @@ Let's say that you have succesfully done those two things and now you have a GCP
 Navigate to the New VM instance / Create new instance. 
 
   * I will start with a very modest CPU (bc in theory all the heavy lifting is done by the GPU). 
-  * I had to choose us-east4 and us-east4-b in the region/zone options so I could get access to the Tesla T4 GPU
-  * Then Click on the CPU platform and GPU section and add the Tesla T4
+  * I had to choose us-east4 and us-east4-b in the region/zone options so I could get access to the Tesla P4 GPU
+  * Then Click on the CPU platform and GPU section and add the Tesla P4
 
 
- ![image](https://user-images.githubusercontent.com/15640943/134555383-bb79068f-3866-4cbd-b588-713b6c3d6cdb.png)
+ ![image](https://user-images.githubusercontent.com/15640943/134716176-0f222b40-f3e8-483f-80fa-68f95490c6ff.png)
  
  Now the Boot Disk - Which flavour of Linux will be easier for the installation of Nanopore? In theory anything Ubuntu should work?
+ I tried before Ubuntu16 - let's try now Ubuntu18
  
  ![image](https://user-images.githubusercontent.com/15640943/134556126-f14bd2b5-72fc-4108-846e-afd8d9fd2651.png)
 
 Click on `Change`
 
-I have also changed the disk type for SSD in case this affects the speed of writing/reading
+And now I ended with
 
-![image](https://user-images.githubusercontent.com/15640943/134556483-e3efce7a-21f0-4205-8a40-2ce2dd51f082.png)
+![image](https://user-images.githubusercontent.com/15640943/134716490-5ab8296e-dbe1-4bbd-9257-44d02193292b.png)
+
 
 Now it comes the section of allowing or not HTTP/HTTPS traffic. For now I'll leave it as it is. Click on `Create`
+
+It takes ~ 2 min to set up the VM. Once it is done, you can go on
 
 ## Accessing the shell 
 
@@ -63,7 +67,7 @@ Allow the shell to find it by adding `ont-guppy/bin` to the `$PATH`
 
 ## Now it finds it but it does not work
 
-![image](https://user-images.githubusercontent.com/15640943/134560094-9052ca5a-409b-4c62-813a-8e47b07dd3be.png
+![image](https://user-images.githubusercontent.com/15640943/134560094-9052ca5a-409b-4c62-813a-8e47b07dd3be.png)
 
 ## Maybe install CUDA?
 
@@ -71,7 +75,8 @@ I found [this](https://towardsdatascience.com/installing-cuda-on-google-cloud-pl
 
 I managed to install CUDA by following their instructions
 
-```curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+```
+curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
 sudo dpkg -i cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
@@ -109,6 +114,20 @@ Now Check if CUDA worked
 `nvcc -V`
 
 That should print some verison of CUDA
+
+### Install Tensorflow
+
+```
+sudo apt-get -y install python3-pip
+sudo pip3 install --upgrade pip
+sudo apt-get -y install ipython
+
+#install numpy matplotlob
+sudo pip3 install numpy scipy matplotlib ipython jupyter pandas sympy nose
+
+#install tensorflow
+sudo pip install tensorflow-gpu
+```
 
 
 
