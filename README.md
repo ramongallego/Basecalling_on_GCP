@@ -69,7 +69,49 @@ Allow the shell to find it by adding `ont-guppy/bin` to the `$PATH`
 
 I found [this](https://towardsdatascience.com/installing-cuda-on-google-cloud-platform-in-10-minutes-9525d874c8c1)
 
-But it does not work. LEt's try again allowing http and https traffic
+I managed to install CUDA by following their instructions
+
+```curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+
+sudo dpkg -i cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+
+sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+
+sudo apt-get update
+
+sudo apt-get install cuda-10-0 cuda-drivers -y
+```
+
+And update both `$PATH` and `$LD_LIBRARY_PATH`
+
+```
+nano ~/.bashrc
+export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}$ 
+export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+source ~/.bashrc
+sudo ldconfig
+```
+
+That protocol follows with installing `CuDNN` - I couldn't fetch the file with `wget`, so I downloaded the file to my computer and then uploaded to the VM using the `Upload file` option in the VM's console
+
+![image](https://user-images.githubusercontent.com/15640943/134709535-f77feede-1887-4084-989f-84095c636545.png)
+
+After copying the file, proceed withthe CuDNN installation
+
+```
+sudo tar -xzvf cudnn-10.0-linux-x64-v7.6.5.32.tgz
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+```
+Now Check if CUDA worked
+
+`nvcc -V`
+
+That should print some verison of CUDA
+
+
+
 
  - Unfortunately NOAA's specs do not allow for http nor https in their firewall setups
  - 
