@@ -137,13 +137,6 @@ sudo pip install tensorflow-gpu
 
 
 
- - Unfortunately NOAA's specs do not allow for http nor https in their firewall setups
- - 
-
-
-
-
-
 
 
 
