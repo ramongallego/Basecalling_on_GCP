@@ -91,8 +91,7 @@ Half way through it it complains and shows youthis
 
 ![image](https://user-images.githubusercontent.com/15640943/134733576-1aae340b-720f-4edc-9020-3499bb44a14a.png)
 
-
-And update both `$PATH` and `$LD_LIBRARY_PATH`
+But press enter, add some password to confirm that it is you doing this and move on. It will finish and then the next thing is to update both `$PATH` and `$LD_LIBRARY_PATH`
 
 ```
 nano ~/.bashrc
@@ -102,7 +101,12 @@ source ~/.bashrc
 sudo ldconfig
 ```
 
-That protocol follows with installing `CuDNN` - I couldn't fetch the file with `wget`, so I downloaded the file to my computer and then uploaded to the VM using the `Upload file` option in the VM's console
+That protocol follows with installing `CuDNN` - I couldn't fetch the file with `wget`, so go to [NVIDIA DEVELOPER](https://developer.nvidia.com/user), and create a free account, and then download the file that matches the OS&architecture in your VM
+
+
+so I downloaded the file to my computer and then uploaded to the VM using the `Upload file` option in the VM's console
+
+
 
 ![image](https://user-images.githubusercontent.com/15640943/134709535-f77feede-1887-4084-989f-84095c636545.png)
 
@@ -134,6 +138,9 @@ sudo pip3 install numpy scipy matplotlib ipython jupyter pandas sympy nose
 sudo pip install tensorflow-gpu
 ```
 
+This sounds good and all but when I try to run guppy with GPU I get
+
+![image](https://user-images.githubusercontent.com/15640943/134752785-75e26663-1d1d-4991-b7b1-9f24ae7e3ecc.png)
 
 
 
