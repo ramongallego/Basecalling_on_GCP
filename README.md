@@ -44,7 +44,13 @@ It takes ~ 2 min to set up the VM. Once it is done, you can go on
 
 ## Accessing the shell 
 
-Click on the shell icon next to the search box in the top of your page
+Click on the SSH button on the main page
+
+
+https://user-images.githubusercontent.com/15640943/134752910-3c0dd667-7913-4d4d-adac-2a41424034f3.mov
+
+
+
 
 ### Can we just install guppy?
 
