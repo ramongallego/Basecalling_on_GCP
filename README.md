@@ -132,6 +132,16 @@ That should print some verison of CUDA
 
 ### Install Tensorflow
 
+**UPDATE 20210927**
+Turns out one of my error messages was about pip3 not installing, and some other dependencies not being met.
+
+```
+sudo apt --fix-broken install
+
+```
+
+Should do the trick. Now continue with the installation
+
 ```
 sudo apt-get -y install python3-pip
 sudo pip3 install --upgrade pip
