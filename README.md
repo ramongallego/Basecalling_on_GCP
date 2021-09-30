@@ -142,6 +142,13 @@ Now Check if CUDA worked
 
 That should print some verison of CUDA
 
+Check if cuDNN is installed
+
+`cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2`
+
+That should also return the part of the file qwith the major version
+
+
 ### Install Tensorflow
 
 **UPDATE 20210927**
