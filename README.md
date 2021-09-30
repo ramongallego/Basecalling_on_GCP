@@ -81,10 +81,22 @@ I found [this](https://towardsdatascience.com/installing-cuda-on-google-cloud-pl
 
 I managed to install CUDA by following their instructions
 
-```
-curl -O http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+If you chose Ubuntu 16.04
 
-sudo dpkg -i cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+```
+curl  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_10.0.130-1_amd64.deb -o cuda.deb
+```
+If you chose Ubuntu 18.04
+
+```
+curl https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb -o cuda.deb
+
+```
+Now continue with installation
+
+```
+
+sudo dpkg -i cuda.deb
 
 sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
 
