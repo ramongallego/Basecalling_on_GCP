@@ -179,7 +179,33 @@ This sounds good and all but when I try to run guppy with GPU I get
 
 
 
+## UPDATE 2021_10_27
 
+The reason of the error is that the VMs generated were working on Secure Boot Mode, and it didn't allow the installation of NVIDIA drivers, because they come not authenticated, or something similar. Once I got permission to change the project to use Normal Boot, I could do the same steps and now it works. 
+With a single Tesla P4 card I am getting ~ 1.6 Million calls per second, which is pretty good and makes super-accurate basecalling a possibility.
+
+# Data Transfer
+
+At the moment, the process involves uploading and downloading really big files. The direct interface for uploading is very, very slow. So the quickest way of doing this -now- is with Google Buckets. The transfer from your local drive to the bucket is as fast as your internet speed is, and the transfer between your bucket and the Virtual Machine is even faster (and you can make it even quicker by using parallel transfer using `gsutil -m cp`)
+
+Once you have the data in the VM you can run the `guppy_basecaller` and then repeat the steps backwards: quick transfer from your VM to the bucket and from there to your final destination.
+
+## Alternative 1: direct transfer from local to VM
+You can install `gcloud` in your local machine and upload directly to the VM using `gcloud compute scp LOCAL_FILE_PATH VM_NAME:~`. Instructions for setting this up are [here](https://cloud.google.com/compute/docs/instances/transfer-files#transfergcloud).
+This saves the middle man but it is still cumbersome. 
+
+## Alternative 2: using the VM as a virtual server with `guppy_basecall_server`
+
+Chatting with Miles Benton, he bounced the idea of using the program `guppy_basecall_server` from your local machine or even the Mk1c. The idea is to use this command:
+```
+guppy_basecall_client --port IP_ADDRESS_OF_THE_VM \
+  -c dna_r9.4.1_450bps_fast.cfg -i LOCAL_INPUT_FOLDER \
+  -s LOCAL_OUTPUT_FOLDER -x 'auto' --recursive
+```
+
+I tried it out, following the steps to generate an external IP for the VM, but it failed, and I don't know if that is something by design of the sandbox or NOAA has particular barriers to stop it.
+
+The steps are found [here](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
 
 
